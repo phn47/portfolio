@@ -1,7 +1,22 @@
 /* This file contains the styles for the personal website */
 
+:root {
+    --primary-color: #2c3e50;
+    --secondary-color: #3498db;
+    --text-color: #333;
+    --light-bg: #f4f4f4;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
 body {
-    font-family: Arial, sans-serif;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    line-height: 1.6;
+    color: var(--text-color);
     background-color: #f4f4f4;
     margin: 0;
     padding: 20px;
@@ -13,10 +28,184 @@ h1 {
 }
 
 .container {
-    max-width: 800px;
+    max-width: 1200px;
     margin: 0 auto;
+    padding: 0 20px;
     background: #fff;
-    padding: 20px;
     border-radius: 8px;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Header & Navigation */
+header {
+    background: var(--primary-color);
+    padding: 1rem 0;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+}
+
+nav ul {
+    display: flex;
+    justify-content: center;
+    list-style: none;
+}
+
+nav ul li a {
+    color: white;
+    text-decoration: none;
+    padding: 0.5rem 1.5rem;
+    transition: color 0.3s;
+}
+
+nav ul li a:hover {
+    color: var(--secondary-color);
+}
+
+/* Hero Section */
+.hero {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('banner-bg.jpg');
+    background-size: cover;
+    background-position: center;
+    color: white;
+}
+
+.profile-photo {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    margin-bottom: 2rem;
+    border: 3px solid white;
+}
+
+.tagline {
+    font-size: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+.social-links a {
+    color: white;
+    font-size: 1.5rem;
+    margin: 0 1rem;
+    transition: color 0.3s;
+}
+
+.social-links a:hover {
+    color: var(--secondary-color);
+}
+
+/* Sections */
+.section {
+    padding: 5rem 0;
+}
+
+.section h2 {
+    text-align: center;
+    margin-bottom: 3rem;
+    color: var(--primary-color);
+}
+
+/* Skills Section */
+.skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    gap: 2rem;
+    text-align: center;
+}
+
+.skill-item i {
+    font-size: 3rem;
+    color: var(--secondary-color);
+    margin-bottom: 1rem;
+}
+
+/* Projects Section */
+.projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+}
+
+.project-card {
+    background: white;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s;
+}
+
+.project-card:hover {
+    transform: translateY(-5px);
+}
+
+.project-card img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+
+.project-card h3 {
+    padding: 1rem;
+}
+
+.project-card p {
+    padding: 0 1rem 1rem;
+}
+
+.button {
+    display: inline-block;
+    padding: 0.8rem 1.5rem;
+    background: var(--secondary-color);
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background 0.3s;
+}
+
+.button:hover {
+    background: var(--primary-color);
+}
+
+/* Contact Section */
+.contact-info {
+    text-align: center;
+}
+
+.contact-info p {
+    margin: 1rem 0;
+}
+
+.contact-info i {
+    color: var(--secondary-color);
+    margin-right: 0.5rem;
+}
+
+/* Footer */
+footer {
+    background: var(--primary-color);
+    color: white;
+    text-align: center;
+    padding: 2rem 0;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    nav ul {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    nav ul li {
+        margin: 0.5rem 0;
+    }
+
+    .hero {
+        padding: 0 1rem;
+    }
 }
