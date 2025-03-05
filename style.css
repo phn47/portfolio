@@ -1,5 +1,6 @@
 /* This file contains the styles for the personal website */
 
+/* Reset and base styles */
 :root {
     --primary-color: #2c3e50;
     --secondary-color: #3498db;
@@ -20,6 +21,7 @@ body {
     background-color: #f4f4f4;
     margin: 0;
     padding: 20px;
+    overflow-x: hidden;
 }
 
 h1 {
@@ -63,25 +65,37 @@ nav ul li a:hover {
     color: var(--secondary-color);
 }
 
-/* Hero Section */
+/* Hero Section với ảnh cố định */
 .hero {
+    position: relative;
     height: 100vh;
+    width: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
-    text-align: center;
-    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('banner-bg.jpg');
-    background-size: cover;
+    background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('banner-bg.jpg');
+    background-attachment: fixed;
     background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
     color: white;
 }
 
+/* Profile photo styling */
 .profile-photo {
-    width: 200px;
-    height: 200px;
+    width: 250px;
+    height: 250px;
     border-radius: 50%;
+    object-fit: cover;
+    border: 5px solid rgba(255, 255, 255, 0.3);
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
     margin-bottom: 2rem;
-    border: 3px solid white;
+    transition: transform 0.3s ease;
+}
+
+.profile-photo:hover {
+    transform: scale(1.05);
+    border-color: var(--secondary-color);
 }
 
 .tagline {
@@ -132,22 +146,24 @@ nav ul li a:hover {
     gap: 2rem;
 }
 
+/* Project card improvements */
 .project-card {
     background: white;
-    border-radius: 8px;
+    border-radius: 12px;
     overflow: hidden;
-    box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
 }
 
 .project-card:hover {
-    transform: translateY(-5px);
+    transform: translateY(-10px);
 }
 
 .project-card img {
     width: 100%;
-    height: 200px;
+    height: 250px;
     object-fit: cover;
+    transition: transform 0.3s ease;
 }
 
 .project-card h3 {
