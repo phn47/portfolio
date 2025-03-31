@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="vi">
+<html lang="vi" data-lang="vi" data-theme="dark">
 
 <head>
     <meta charset="UTF-8">
@@ -7,119 +7,409 @@
     <title>Phạm Hoài Nam - Software Engineer</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typed.js@2.0.12/dist/typed.min.css">
 </head>
 
 <body>
-    <!-- <header>
-        <nav>
-            <ul>
-                <li><a href="#home">Home</a></li>
-                <li><a href="#about">About</a></li>
-                <li><a href="#skills">Skills</a></li>
-                <li><a href="#projects">Projects</a></li>
-                <li><a href="#contact">Contact</a></li>
-            </ul>
-        </nav>
-    </header> -->
-
-    <section id="home" class="hero">
+    <div id="header">
         <div class="container">
-            <img src="https://scontent.fsgn1-1.fna.fbcdn.net/v/t39.30808-6/473238005_1116079926672169_8660071272349098292_n.jpg?stp=cp6_dst-jpg_tt6&_nc_cat=111&ccb=1-7&_nc_sid=6ee11a&_nc_eui2=AeEQpbBKCAJ10t_Q6jmnOHcTZBTeRa-Y_8hkFN5Fr5j_yFLXRc7kCJIZYn7qMbUPtv5TNDUoZJnI33qxUPf-ESmA&_nc_ohc=kMcFJNxoSy8Q7kNvgGtwnc6&_nc_oc=AdgVd1EXzeMHeMs3MgxlH7VHgE9JbNo3ar-eWVOvofHDZ81XKmjVGoykqTQ1e3f9WRU&_nc_zt=23&_nc_ht=scontent.fsgn1-1.fna&_nc_gid=AmVGlfCnc3AxFP4QF-gJ-QN&oh=00_AYD23mzGpg8MfsItUPw1_t5dJNjoaPX55qa6lAUeRUhESA&oe=67CDD318"
-                alt="Profile Photo" class="profile-photo" data-aos="fade-up">
-            <h1 data-aos="fade-up" data-aos-delay="200">Phạm Hoài Nam</h1>
-            <p class="tagline" data-aos="fade-up" data-aos-delay="400">Software Engineer | Full Stack Developer</p>
-            <div class="social-links" data-aos="fade-up" data-aos-delay="600">
-                <a href="https://github.com/yourusername" target="_blank"><i class="fab fa-github"></i></a>
-                <a href="https://linkedin.com/in/yourusername" target="_blank"><i class="fab fa-linkedin"></i></a>
-                <a href="https://twitter.com/yourusername" target="_blank"><i class="fab fa-twitter"></i></a>
-            </div>
-        </div>
-    </section>
-
-    <section id="about" class="section">
-        <div class="container">
-            <h2 data-aos="fade-up">Về Tôi</h2>
-            <div class="about-content" data-aos="fade-up" data-aos-delay="200">
-                <p>Tôi là một Software Engineer với niềm đam mê về phát triển phần mềm và công nghệ. Với kinh nghiệm
-                    trong việc phát triển Full Stack, tôi luôn tìm kiếm những thách thức mới và cơ hội để học hỏi, phát
-                    triển bản thân.</p>
-                <p>Mục tiêu của tôi là tạo ra những giải pháp phần mềm chất lượng cao, dễ bảo trì và có khả năng mở
-                    rộng, đồng thời luôn cập nhật những công nghệ mới nhất trong ngành.</p>
-            </div>
-        </div>
-    </section>
-
-    <section id="skills" class="section">
-        <div class="container">
-            <h2 data-aos="fade-up">Kỹ Năng</h2>
-            <div class="skills-grid">
-                <div class="skill-item" data-aos="fade-up" data-aos-delay="100">
-                    <i class="fab fa-html5"></i>
-                    <p>HTML5</p>
+            <nav>
+                <div class="logo">
+                    <a href="#header">PHN</a>
                 </div>
-                <div class="skill-item" data-aos="fade-up" data-aos-delay="200">
-                    <i class="fab fa-css3-alt"></i>
-                    <p>CSS3</p>
+                <ul id="sidemenu">
+                    <li><a href="#header" data-vi="Trang chủ" data-en="Home">Trang chủ</a></li>
+                    <li><a href="#about" data-vi="Giới thiệu" data-en="About">Giới thiệu</a></li>
+                    <li><a href="#services" data-vi="Dịch vụ" data-en="Services">Dịch vụ</a></li>
+                    <li><a href="#portfolio" data-vi="Dự án" data-en="Portfolio">Dự án</a></li>
+                    <li><a href="#contact" data-vi="Liên hệ" data-en="Contact">Liên hệ</a></li>
+                    <i class="fas fa-times" onclick="closemenu()"></i>
+                </ul>
+                <div class="controls">
+                    <div class="theme-switch" onclick="toggleTheme()">
+                        <i class="fas fa-moon"></i>
+                    </div>
+                    <div class="lang-switch" onclick="toggleLanguage()">
+                        <i class="fas fa-language"></i>
+                    </div>
+                    <i class="fas fa-bars" onclick="openmenu()"></i>
                 </div>
-                <div class="skill-item" data-aos="fade-up" data-aos-delay="300">
-                    <i class="fab fa-js"></i>
-                    <p>JavaScript</p>
+            </nav>
+            <div class="header-text">
+                <p data-vi="Kỹ sư phần mềm" data-en="Software Engineer">Kỹ sư phần mềm</p>
+                <h1 data-vi="Xin chào, tôi là <span>Phạm Hoài Nam</span><br>Đến từ Việt Nam"
+                    data-en="Hi, I'm <span>Pham Hoai Nam</span><br>From Vietnam">
+                    Xin chào, tôi là <span>Phạm Hoài Nam</span><br>Đến từ Việt Nam
+                </h1>
+                <div class="text-animate">
+                    <h3 data-vi="Tôi là " data-en="I'm a ">Tôi là <span class="typing"></span></h3>
                 </div>
-                <div class="skill-item" data-aos="fade-up" data-aos-delay="400">
-                    <i class="fab fa-react"></i>
-                    <p>React</p>
-                </div>
-                <div class="skill-item" data-aos="fade-up" data-aos-delay="500">
-                    <i class="fab fa-node-js"></i>
-                    <p>Node.js</p>
-                </div>
-                <div class="skill-item" data-aos="fade-up" data-aos-delay="600">
-                    <i class="fas fa-database"></i>
-                    <p>SQL</p>
+                <div class="social-icons">
+                    <a href="https://github.com/phamhoainam" target="_blank"><i class="fab fa-github"></i></a>
+                    <a href="mailto:phamnam1449@gmail.com"><i class="fas fa-envelope"></i></a>
+                    <a href="https://linkedin.com/in/phamhoainam" target="_blank"><i class="fab fa-linkedin"></i></a>
                 </div>
             </div>
         </div>
-    </section>
+    </div>
 
-    <!-- <section id="projects" class="section">
+    <!-- About Section -->
+    <div id="about">
         <div class="container">
-            <h2>Projects</h2>
-            <div class="projects-grid">
-                <div class="project-card">
-                    <img src="project1.jpg" alt="Project 1">
-                    <h3>Project Title</h3>
-                    <p>Project description goes here...</p>
-                    <a href="#" class="button">View Project</a>
+            <div class="row">
+                <div class="about-col-1">
+                    <img src="https://res.cloudinary.com/derzqoidk/image/upload/v1743443174/profile/kg8ynouleuuhyadk1dei.jpg"
+                        alt="Profile Photo">
                 </div>
-                
+                <div class="about-col-2">
+                    <h1 class="sub-title" data-vi="Giới Thiệu" data-en="About Me">Giới Thiệu</h1>
+                    <p data-vi="Tôi là một Kỹ sư phần mềm với niềm đam mê về phát triển phần mềm và công nghệ. Với kinh nghiệm trong việc phát triển Full Stack, tôi luôn tìm kiếm những thách thức mới và cơ hội để học hỏi, phát triển bản thân."
+                        data-en="I am a Software Engineer with a passion for software development and technology. With experience in Full Stack development, I am always looking for new challenges and opportunities to learn and grow.">
+                        Tôi là một Kỹ sư phần mềm với niềm đam mê về phát triển phần mềm và công nghệ. Với kinh nghiệm
+                        trong việc phát triển Full Stack, tôi luôn tìm kiếm những thách thức mới và cơ hội để học hỏi,
+                        phát triển bản thân.
+                    </p>
+
+                    <div class="tab-titles">
+                        <p class="tab-links active-link" onclick="opentab('skills')" data-vi="Kỹ năng" data-en="Skills">
+                            Kỹ năng</p>
+                        <p class="tab-links" onclick="opentab('experience')" data-vi="Kinh nghiệm" data-en="Experience">
+                            Kinh nghiệm</p>
+                        <p class="tab-links" onclick="opentab('education')" data-vi="Học vấn" data-en="Education">Học
+                            vấn</p>
+                    </div>
+
+                    <div class="tab-contents active-tab" id="skills">
+                        <ul>
+                            <li><span data-vi="Frontend" data-en="Frontend">Frontend</span><br>HTML, CSS, JavaScript,
+                                React</li>
+                            <li><span data-vi="Backend" data-en="Backend">Backend</span><br>Node.js, Express, MongoDB
+                            </li>
+                            <li><span data-vi="Khác" data-en="Other">Khác</span><br>Git, RESTful APIs, SQL</li>
+                        </ul>
+                    </div>
+
+                    <div class="tab-contents" id="experience">
+                        <ul>
+                            <li><span>2022 - Present</span><br>
+                                <span data-vi="Lập trình viên Full Stack tại Công ty XYZ"
+                                    data-en="Full Stack Developer at Company XYZ">
+                                    Lập trình viên Full Stack tại Công ty XYZ
+                                </span>
+                            </li>
+                            <li><span>2021 - 2022</span><br>
+                                <span data-vi="Lập trình viên Frontend tại Công ty ABC"
+                                    data-en="Frontend Developer at Company ABC">
+                                    Lập trình viên Frontend tại Công ty ABC
+                                </span>
+                            </li>
+                            <li><span>2020 - 2021</span><br>
+                                <span data-vi="Thực tập sinh Web Development" data-en="Web Development Intern">
+                                    Thực tập sinh Web Development
+                                </span>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="tab-contents" id="education">
+                        <ul>
+                            <li><span>2020</span><br>
+                                <span data-vi="Cử nhân Khoa học Máy tính" data-en="Computer Science Degree">
+                                    Cử nhân Khoa học Máy tính
+                                </span>
+                            </li>
+                            <li><span>2019</span><br>
+                                <span data-vi="Chứng chỉ Phát triển Web" data-en="Web Development Certification">
+                                    Chứng chỉ Phát triển Web
+                                </span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
             </div>
         </div>
-    </section> -->
+    </div>
 
-    <section id="contact" class="section">
+    <!-- Services Section -->
+    <div id="services">
         <div class="container">
-            <h2 data-aos="fade-up">Liên Hệ</h2>
-            <div class="contact-info" data-aos="fade-up" data-aos-delay="200">
-                <p><i class="fas fa-envelope"></i> phamnam1449@gmail.com</p>
-                <p><i class="fas fa-phone"></i> 0327898427</p>
-                <p><i class="fas fa-location-dot"></i> Quận 9, TP.HCM, Việt Nam</p>
+            <h1 class="sub-title" data-vi="Dịch Vụ" data-en="My Services">Dịch Vụ</h1>
+            <div class="services-list">
+                <div>
+                    <i class="fas fa-code"></i>
+                    <h2 data-vi="Phát triển Web" data-en="Web Development">Phát triển Web</h2>
+                    <p data-vi="Phát triển web full stack sử dụng công nghệ hiện đại và các phương pháp tốt nhất."
+                        data-en="Full stack web development using modern technologies and best practices.">
+                        Phát triển web full stack sử dụng công nghệ hiện đại và các phương pháp tốt nhất.
+                    </p>
+                </div>
+                <div>
+                    <i class="fas fa-crop-alt"></i>
+                    <h2 data-vi="Thiết kế UI/UX" data-en="UI/UX Design">Thiết kế UI/UX</h2>
+                    <p data-vi="Tạo giao diện người dùng đẹp và trực quan với trải nghiệm người dùng tuyệt vời."
+                        data-en="Creating beautiful and intuitive user interfaces with great user experience.">
+                        Tạo giao diện người dùng đẹp và trực quan với trải nghiệm người dùng tuyệt vời.
+                    </p>
+                </div>
+                <div>
+                    <i class="fab fa-app-store"></i>
+                    <h2 data-vi="Phát triển Ứng dụng" data-en="App Development">Phát triển Ứng dụng</h2>
+                    <p data-vi="Xây dựng ứng dụng web responsive và có khả năng mở rộng."
+                        data-en="Building responsive and scalable web applications.">
+                        Xây dựng ứng dụng web responsive và có khả năng mở rộng.
+                    </p>
+                </div>
             </div>
         </div>
-    </section>
+    </div>
 
-    <footer>
+    <!-- Portfolio Section -->
+    <div id="portfolio">
         <div class="container">
-            <p>&copy; 2024 Phạm Hoài Nam. All rights reserved.</p>
+            <h1 class="sub-title" data-vi="Dự Án Của Tôi" data-en="My Work">Dự Án Của Tôi</h1>
+            <div class="work-list" id="github-projects">
+                <!-- Projects will be loaded here dynamically -->
+            </div>
         </div>
-    </footer>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+    </div>
+
+    <!-- Contact Section -->
+    <div id="contact">
+        <div class="container">
+            <div class="row">
+                <div class="contact-left">
+                    <h1 class="sub-title" data-vi="Liên Hệ Với Tôi" data-en="Contact Me">Liên Hệ Với Tôi</h1>
+                    <p><i class="fas fa-paper-plane"></i> phamnam1449@gmail.com</p>
+                    <p><i class="fas fa-phone-square-alt"></i> 0327898427</p>
+                    <div class="social-icons">
+                        <a href="https://github.com/phamhoainam" target="_blank"><i class="fab fa-github"></i></a>
+                        <a href="mailto:phamnam1449@gmail.com"><i class="fas fa-envelope"></i></a>
+                        <a href="https://linkedin.com/in/phamhoainam" target="_blank"><i
+                                class="fab fa-linkedin"></i></a>
+                    </div>
+                    <a href="assets/cv.pdf" download class="btn btn2" data-vi="Tải CV" data-en="Download CV">Tải CV</a>
+                </div>
+                <div class="contact-right">
+                    <form id="contact-form" onsubmit="sendEmail(event)">
+                        <input type="text" id="name" name="Name" placeholder="Họ và tên" data-vi-placeholder="Họ và tên"
+                            data-en-placeholder="Your Name" required>
+                        <input type="email" id="email" name="Email" placeholder="Email của bạn"
+                            data-vi-placeholder="Email của bạn" data-en-placeholder="Your Email" required>
+                        <textarea id="message" name="Message" rows="6" placeholder="Tin nhắn của bạn"
+                            data-vi-placeholder="Tin nhắn của bạn" data-en-placeholder="Your Message"
+                            required></textarea>
+                        <button type="submit" class="btn btn2" data-vi="Gửi" data-en="Submit">Gửi</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="copyright">
+        <p data-vi="Bản quyền © 2024 Phạm Hoài Nam. Được tạo với " data-en="Copyright © 2024 Phạm Hoài Nam. Made with ">
+            Bản quyền © 2024 Phạm Hoài Nam. Được tạo với <i class="fas fa-heart"></i>
+        </p>
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
     <script>
+        var tablinks = document.getElementsByClassName("tab-links");
+        var tabcontents = document.getElementsByClassName("tab-contents");
+
+        function opentab(tabname) {
+            for (tablink of tablinks) {
+                tablink.classList.remove("active-link");
+            }
+            for (tabcontent of tabcontents) {
+                tabcontent.classList.remove("active-tab");
+            }
+            event.currentTarget.classList.add("active-link");
+            document.getElementById(tabname).classList.add("active-tab");
+        }
+
+        // Mobile menu
+        var sidemenu = document.getElementById("sidemenu");
+
+        function openmenu() {
+            sidemenu.style.right = "0";
+        }
+
+        function closemenu() {
+            sidemenu.style.right = "-200px";
+        }
+
+        // Theme toggle
+        function toggleTheme() {
+            const html = document.documentElement;
+            const currentTheme = html.getAttribute('data-theme');
+            const themeIcon = document.querySelector('.theme-switch i');
+
+            if (currentTheme === 'dark') {
+                html.setAttribute('data-theme', 'light');
+                themeIcon.classList.remove('fa-moon');
+                themeIcon.classList.add('fa-sun');
+            } else {
+                html.setAttribute('data-theme', 'dark');
+                themeIcon.classList.remove('fa-sun');
+                themeIcon.classList.add('fa-moon');
+            }
+        }
+
+        // Language toggle
+        function toggleLanguage() {
+            const html = document.documentElement;
+            const currentLang = html.getAttribute('data-lang');
+            const elements = document.querySelectorAll('[data-vi], [data-en]');
+            const inputs = document.querySelectorAll('[data-vi-placeholder], [data-en-placeholder]');
+
+            if (currentLang === 'vi') {
+                html.setAttribute('data-lang', 'en');
+                html.setAttribute('lang', 'en');
+
+                elements.forEach(el => {
+                    if (el.getAttribute('data-en')) {
+                        el.innerHTML = el.getAttribute('data-en');
+                    }
+                });
+
+                inputs.forEach(input => {
+                    input.placeholder = input.getAttribute('data-en-placeholder');
+                });
+
+                // Update typing animation for English
+                updateTypingAnimation('en');
+                // Update projects
+                fetchGitHubProjects();
+            } else {
+                html.setAttribute('data-lang', 'vi');
+                html.setAttribute('lang', 'vi');
+
+                elements.forEach(el => {
+                    if (el.getAttribute('data-vi')) {
+                        el.innerHTML = el.getAttribute('data-vi');
+                    }
+                });
+
+                inputs.forEach(input => {
+                    input.placeholder = input.getAttribute('data-vi-placeholder');
+                });
+
+                // Update typing animation for Vietnamese
+                updateTypingAnimation('vi');
+                // Update projects
+                fetchGitHubProjects();
+            }
+        }
+
+        // Update typing animation based on language
+        function updateTypingAnimation(lang) {
+            if (window.typed) {
+                window.typed.destroy();
+            }
+
+            const strings = lang === 'vi'
+                ? ["Lập trình viên Full Stack", "Nhà thiết kế Web", "Kỹ sư phần mềm"]
+                : ["Full Stack Developer", "Web Designer", "Software Engineer"];
+
+            window.typed = new Typed(".typing", {
+                strings: strings,
+                typeSpeed: 100,
+                backSpeed: 60,
+                loop: true
+            });
+        }
+
+        // Typing Animation
+        window.addEventListener('DOMContentLoaded', () => {
+            const lang = document.documentElement.getAttribute('data-lang');
+            updateTypingAnimation(lang);
+        });
+
+        // AOS Animation
         AOS.init({
             duration: 1000,
-            once: true,
-            offset: 100
+            once: true
         });
+
+        // GitHub Projects
+        async function fetchGitHubProjects() {
+            try {
+                const response = await fetch('https://api.github.com/users/phamhoainam/repos');
+                const projects = await response.json();
+                const lang = document.documentElement.getAttribute('data-lang');
+                const projectsContainer = document.getElementById('github-projects');
+
+                // Clear existing projects
+                projectsContainer.innerHTML = '';
+
+                projects.slice(0, 6).forEach(project => {
+                    const noDesc = lang === 'vi' ? 'Không có mô tả' : 'No description available';
+                    const projectCard = `
+                        <div class="work" data-aos="fade-up">
+                            <img src="https://via.placeholder.com/400x300?text=${project.name}" alt="${project.name}">
+                            <div class="layer">
+                                <h3>${project.name}</h3>
+                                <p>${project.description || noDesc}</p>
+                                <div class="project-links">
+                                    <a href="${project.html_url}" target="_blank">
+                                        <i class="fab fa-github"></i>
+                                    </a>
+                                    ${project.homepage ? `
+                                        <a href="${project.homepage}" target="_blank">
+                                            <i class="fas fa-external-link-alt"></i>
+                                        </a>
+                                    ` : ''}
+                                </div>
+                            </div>
+                        </div>
+                    `;
+                    projectsContainer.innerHTML += projectCard;
+                });
+            } catch (error) {
+                console.error('Error fetching GitHub projects:', error);
+                const lang = document.documentElement.getAttribute('data-lang');
+                const errorMsg = lang === 'vi'
+                    ? 'Đã xảy ra lỗi khi tải dự án từ GitHub'
+                    : 'Error loading projects from GitHub';
+
+                document.getElementById('github-projects').innerHTML = `<p>${errorMsg}</p>`;
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            fetchGitHubProjects();
+
+            // Set up theme icon based on initial theme
+            const themeIcon = document.querySelector('.theme-switch i');
+            const currentTheme = document.documentElement.getAttribute('data-theme');
+
+            if (currentTheme === 'light') {
+                themeIcon.classList.remove('fa-moon');
+                themeIcon.classList.add('fa-sun');
+            }
+        });
+
+        // Contact Form
+        function sendEmail(e) {
+            e.preventDefault();
+
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const message = document.getElementById('message').value;
+            const lang = document.documentElement.getAttribute('data-lang');
+
+            const subject = lang === 'vi' ? `Liên hệ từ ${name}` : `Contact from ${name}`;
+            const body = lang === 'vi'
+                ? `Từ: ${name}%0D%0AEmail: ${email}%0D%0A%0D%0A${message}`
+                : `From: ${name}%0D%0AEmail: ${email}%0D%0A%0D%0A${message}`;
+
+            const mailtoLink = `mailto:phamnam1449@gmail.com?subject=${subject}&body=${body}`;
+
+            window.location.href = mailtoLink;
+        }
     </script>
 </body>
 
