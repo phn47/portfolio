@@ -52,7 +52,7 @@ h1 {
 #header {
     width: 100%;
     height: 100vh;
-    background-image: url(https://res.cloudinary.com/derzqoidk/image/upload/v1743445287/profile/ymbkalnp0kb8ksnkjoae.jpg);
+    background-image: url(images/background.png);
     background-size: cover;
     background-position: center;
 }
@@ -106,12 +106,22 @@ nav ul li a:hover::after {
     font-size: 24px;
     color: var(--text-color);
     margin-left: 15px;
-    transition: transform 0.3s;
+    transition: var(--transition);
+    padding: 8px;
+    border-radius: 50%;
+    background-color: var(--background-light);
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .theme-switch:hover,
 .lang-switch:hover {
     transform: scale(1.1);
+    background-color: var(--primary-color);
+    color: #fff;
 }
 
 .controls {
@@ -456,7 +466,7 @@ nav .fas {
 
 @media only screen and (max-width: 600px) {
     #header {
-        background-image: url(https://res.cloudinary.com/derzqoidk/image/upload/v1743445287/profile/ymbkalnp0kb8ksnkjoae.jpg);
+        background-image: url(images/phone-background.png);
     }
 
     .header-text {

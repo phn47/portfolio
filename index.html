@@ -251,10 +251,12 @@
                 html.setAttribute('data-theme', 'light');
                 themeIcon.classList.remove('fa-moon');
                 themeIcon.classList.add('fa-sun');
+                localStorage.setItem('theme', 'light');
             } else {
                 html.setAttribute('data-theme', 'dark');
                 themeIcon.classList.remove('fa-sun');
                 themeIcon.classList.add('fa-moon');
+                localStorage.setItem('theme', 'dark');
             }
         }
 
@@ -264,10 +266,16 @@
             const currentLang = html.getAttribute('data-lang');
             const elements = document.querySelectorAll('[data-vi], [data-en]');
             const inputs = document.querySelectorAll('[data-vi-placeholder], [data-en-placeholder]');
+            const langIcon = document.querySelector('.lang-switch i');
 
             if (currentLang === 'vi') {
                 html.setAttribute('data-lang', 'en');
                 html.setAttribute('lang', 'en');
+                localStorage.setItem('lang', 'en');
+
+                // Cập nhật biểu tượng ngôn ngữ
+                langIcon.classList.remove('fa-language');
+                langIcon.classList.add('fa-globe');
 
                 elements.forEach(el => {
                     if (el.getAttribute('data-en')) {
@@ -286,6 +294,11 @@
             } else {
                 html.setAttribute('data-lang', 'vi');
                 html.setAttribute('lang', 'vi');
+                localStorage.setItem('lang', 'vi');
+
+                // Cập nhật biểu tượng ngôn ngữ
+                langIcon.classList.remove('fa-globe');
+                langIcon.classList.add('fa-language');
 
                 elements.forEach(el => {
                     if (el.getAttribute('data-vi')) {
@@ -337,7 +350,7 @@
         // GitHub Projects
         async function fetchGitHubProjects() {
             try {
-                const response = await fetch('https://api.github.com/users/phamhoainam/repos');
+                const response = await fetch('https://github.com/phn47/repos');
                 const projects = await response.json();
                 const lang = document.documentElement.getAttribute('data-lang');
                 const projectsContainer = document.getElementById('github-projects');
@@ -382,13 +395,53 @@
         document.addEventListener('DOMContentLoaded', () => {
             fetchGitHubProjects();
 
-            // Set up theme icon based on initial theme
-            const themeIcon = document.querySelector('.theme-switch i');
-            const currentTheme = document.documentElement.getAttribute('data-theme');
+            // Load saved theme preference
+            const savedTheme = localStorage.getItem('theme');
+            if (savedTheme) {
+                document.documentElement.setAttribute('data-theme', savedTheme);
 
-            if (currentTheme === 'light') {
-                themeIcon.classList.remove('fa-moon');
-                themeIcon.classList.add('fa-sun');
+                // Update theme icon based on saved theme
+                const themeIcon = document.querySelector('.theme-switch i');
+                if (savedTheme === 'light') {
+                    themeIcon.classList.remove('fa-moon');
+                    themeIcon.classList.add('fa-sun');
+                } else {
+                    themeIcon.classList.remove('fa-sun');
+                    themeIcon.classList.add('fa-moon');
+                }
+            }
+
+            // Load saved language preference
+            const savedLang = localStorage.getItem('lang');
+            if (savedLang) {
+                document.documentElement.setAttribute('data-lang', savedLang);
+                document.documentElement.setAttribute('lang', savedLang);
+
+                // Cập nhật biểu tượng ngôn ngữ
+                const langIcon = document.querySelector('.lang-switch i');
+                if (savedLang === 'en') {
+                    langIcon.classList.remove('fa-language');
+                    langIcon.classList.add('fa-globe');
+
+                    const elements = document.querySelectorAll('[data-vi], [data-en]');
+                    const inputs = document.querySelectorAll('[data-vi-placeholder], [data-en-placeholder]');
+
+                    elements.forEach(el => {
+                        if (el.getAttribute('data-en')) {
+                            el.innerHTML = el.getAttribute('data-en');
+                        }
+                    });
+
+                    inputs.forEach(input => {
+                        input.placeholder = input.getAttribute('data-en-placeholder');
+                    });
+                } else {
+                    langIcon.classList.remove('fa-globe');
+                    langIcon.classList.add('fa-language');
+                }
+
+                // Update typing animation based on saved language
+                updateTypingAnimation(savedLang);
             }
         });
 
