@@ -2,10 +2,12 @@
 
 /* Reset and base styles */
 :root {
-    --primary-color: #2c3e50;
-    --secondary-color: #3498db;
-    --text-color: #333;
-    --light-bg: #f4f4f4;
+    --primary-color: #2d3436;
+    --secondary-color: #0984e3;
+    --accent-color: #00b894;
+    --text-color: #2d3436;
+    --light-bg: #f5f6fa;
+    --white: #ffffff;
 }
 
 * {
@@ -18,10 +20,7 @@ body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     line-height: 1.6;
     color: var(--text-color);
-    background-color: #f4f4f4;
-    margin: 0;
-    padding: 20px;
-    overflow-x: hidden;
+    background-color: var(--light-bg);
 }
 
 h1 {
@@ -32,10 +31,7 @@ h1 {
 .container {
     max-width: 1200px;
     margin: 0 auto;
-    padding: 0 20px;
-    background: #fff;
-    border-radius: 8px;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    padding: 0 2rem;
 }
 
 /* Header & Navigation */
@@ -65,78 +61,142 @@ nav ul li a:hover {
     color: var(--secondary-color);
 }
 
-/* Hero Section với ảnh cố định */
+/* Hero Section */
 .hero {
-    position: relative;
-    height: 100vh;
-    width: 100%;
+    min-height: 100vh;
     display: flex;
     align-items: center;
     justify-content: center;
-    background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('banner-bg.jpg');
-    background-attachment: fixed;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-    color: white;
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    color: var(--white);
+    text-align: center;
+    position: relative;
+    overflow: hidden;
 }
 
-/* Profile photo styling */
+.hero::before {
+    content: '';
+    position: absolute;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 0%, transparent 60%);
+    animation: rotate 20s linear infinite;
+}
+
+@keyframes rotate {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}
+
 .profile-photo {
-    width: 250px;
-    height: 250px;
+    width: 200px;
+    height: 200px;
     border-radius: 50%;
-    object-fit: cover;
-    border: 5px solid rgba(255, 255, 255, 0.3);
-    box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+    border: 5px solid var(--white);
     margin-bottom: 2rem;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
     transition: transform 0.3s ease;
 }
 
 .profile-photo:hover {
     transform: scale(1.05);
-    border-color: var(--secondary-color);
+}
+
+.hero h1 {
+    font-size: 3.5rem;
+    margin-bottom: 1rem;
+    font-weight: 700;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
 }
 
 .tagline {
     font-size: 1.5rem;
     margin-bottom: 2rem;
+    opacity: 0.9;
+}
+
+.social-links {
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem;
 }
 
 .social-links a {
-    color: white;
+    color: var(--white);
     font-size: 1.5rem;
-    margin: 0 1rem;
-    transition: color 0.3s;
+    transition: transform 0.3s ease, color 0.3s ease;
 }
 
 .social-links a:hover {
-    color: var(--secondary-color);
+    transform: translateY(-3px);
+    color: var(--accent-color);
 }
 
 /* Sections */
 .section {
     padding: 5rem 0;
+    background: var(--white);
+    position: relative;
+}
+
+.section:nth-child(even) {
+    background: var(--light-bg);
 }
 
 .section h2 {
-    text-align: center;
+    font-size: 2.5rem;
     margin-bottom: 3rem;
-    color: var(--primary-color);
+    text-align: center;
+    position: relative;
+    padding-bottom: 1rem;
+}
+
+.section h2::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100px;
+    height: 3px;
+    background: var(--secondary-color);
 }
 
 /* Skills Section */
 .skills-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
     gap: 2rem;
+    padding: 2rem;
+}
+
+.skill-item {
     text-align: center;
+    padding: 2rem;
+    background: var(--white);
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+}
+
+.skill-item:hover {
+    transform: translateY(-10px);
 }
 
 .skill-item i {
     font-size: 3rem;
     color: var(--secondary-color);
     margin-bottom: 1rem;
+}
+
+.skill-item p {
+    font-size: 1.1rem;
+    font-weight: 500;
 }
 
 /* Projects Section */
@@ -190,22 +250,28 @@ nav ul li a:hover {
 
 /* Contact Section */
 .contact-info {
-    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
 }
 
 .contact-info p {
-    margin: 1rem 0;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    font-size: 1.2rem;
 }
 
 .contact-info i {
     color: var(--secondary-color);
-    margin-right: 0.5rem;
+    font-size: 1.5rem;
 }
 
 /* Footer */
 footer {
     background: var(--primary-color);
-    color: white;
+    color: var(--white);
     text-align: center;
     padding: 2rem 0;
 }
@@ -221,7 +287,19 @@ footer {
         margin: 0.5rem 0;
     }
 
-    .hero {
-        padding: 0 1rem;
+    .hero h1 {
+        font-size: 2.5rem;
+    }
+
+    .tagline {
+        font-size: 1.2rem;
+    }
+
+    .section {
+        padding: 3rem 0;
+    }
+
+    .skills-grid {
+        grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
     }
 }
