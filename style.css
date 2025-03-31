@@ -52,7 +52,7 @@ h1 {
 #header {
     width: 100%;
     height: 100vh;
-    background-image: url(images/background.png);
+    background-image: url(https://res.cloudinary.com/derzqoidk/image/upload/v1743445287/profile/ymbkalnp0kb8ksnkjoae.jpg);
     background-size: cover;
     background-position: center;
 }
@@ -456,7 +456,7 @@ nav .fas {
 
 @media only screen and (max-width: 600px) {
     #header {
-        background-image: url(images/phone-background.png);
+        background-image: url(https://res.cloudinary.com/derzqoidk/image/upload/v1743445287/profile/ymbkalnp0kb8ksnkjoae.jpg);
     }
 
     .header-text {
