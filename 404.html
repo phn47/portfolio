@@ -4,132 +4,111 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Phạm Hoài Nam - Portfolio</title>
+    <title>404 Page Not Found</title>
     <style>
         body {
             margin: 0;
             padding: 0;
             min-height: 100vh;
+            background: #fffbe6;
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            background: #f4d03f;
-            font-family: 'Comic Sans MS', cursive;
-            background-image: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI1NiIgaGVpZ2h0PSIxMDAiPgo8cmVjdCB3aWR0aD0iNTYiIGhlaWdodD0iMTAwIiBmaWxsPSIjZjRkMDNmIj48L3JlY3Q+CjxwYXRoIGQ9Ik0yOCA2NkwwIDUwTDAgMTZMMjggMEw1NiAxNkw1NiA1MEwyOCA2NkwyOCAxMDAiIGZpbGw9IiNlY2YwZjMiPjwvcGF0aD4KPHBhdGggZD0iTTI4IDBMMjggMzRMMCA1MEwwIDE2WiIgZmlsbD0iI2QwZTdmMyI+PC9wYXRoPgo8cGF0aCBkPSJNNTYgMTZMNTYgNTBMMjggNjZMMjggMzRaIiBmaWxsPSIjZDBlN2YzIj48L3BhdGg+Cjwvc3ZnPg==');
+            font-family: 'Segoe UI', 'Comic Sans MS', cursive, sans-serif;
         }
 
         .container {
             text-align: center;
-            padding: 2rem;
-            background: rgba(255, 255, 255, 0.9);
-            border-radius: 15px;
-            box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
-            animation: float 3s ease-in-out infinite;
+            margin-top: 40px;
         }
 
         .caveman {
-            width: 150px;
-            height: 150px;
-            margin: 20px auto;
-            background-image: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MTIgNTEyIj48cGF0aCBmaWxsPSIjNjY0NTAwIiBkPSJNMjU2IDUxMmMxNDEuNCAwIDI1Ni0xMTQuNiAyNTYtMjU2UzM5Ny40IDAgMjU2IDBTMCAxMTQuNiAwIDI1NnMxMTQuNiAyNTYgMjU2IDI1NnoiLz48cGF0aCBmaWxsPSIjZmZmIiBkPSJNMzIwIDI1NmMwIDM1LjMtMjguNyA2NC02NCA2NHMtNjQtMjguNy02NC02NCAyOC43LTY0IDY0LTY0IDY0IDI4LjcgNjQgNjR6Ii8+PC9zdmc+');
-            animation: bounce 2s ease-in-out infinite;
+            width: 180px;
+            margin: 0 auto 20px auto;
+            animation: shake 2s infinite linear;
+        }
+
+        @keyframes shake {
+
+            0%,
+            100% {
+                transform: translateY(0);
+            }
+
+            20% {
+                transform: translateY(-5px);
+            }
+
+            40% {
+                transform: translateY(5px);
+            }
+
+            60% {
+                transform: translateY(-3px);
+            }
+
+            80% {
+                transform: translateY(3px);
+            }
         }
 
         h1 {
-            color: #8B4513;
-            font-size: 2.5rem;
-            margin-bottom: 1rem;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+            font-size: 4rem;
+            color: #222;
+            margin: 0 0 10px 0;
+            font-family: 'Georgia', serif;
         }
 
-        p {
-            color: #654321;
-            font-size: 1.2rem;
-            margin-bottom: 2rem;
+        .notfound {
+            font-size: 2rem;
+            color: #2d2d2d;
+            margin-bottom: 10px;
+            font-weight: bold;
         }
 
-        .redirect-message {
-            font-size: 1rem;
-            color: #666;
-            margin-top: 1rem;
+        .desc {
+            font-size: 1.1rem;
+            color: #444;
+            margin-bottom: 30px;
         }
 
-        @keyframes float {
-
-            0%,
-            100% {
-                transform: translateY(0);
-            }
-
-            50% {
-                transform: translateY(-20px);
-            }
+        .home-btn {
+            background: #4CAF50;
+            color: #fff;
+            border: none;
+            padding: 14px 32px;
+            border-radius: 6px;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: background 0.2s, transform 0.2s;
+            font-weight: bold;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
         }
 
-        @keyframes bounce {
-
-            0%,
-            100% {
-                transform: translateY(0);
-            }
-
-            50% {
-                transform: translateY(-10px);
-            }
+        .home-btn:hover {
+            background: #388e3c;
+            transform: translateY(-2px) scale(1.04);
         }
 
-        .stone {
-            position: absolute;
-            width: 50px;
-            height: 50px;
-            background: #8B4513;
-            border-radius: 50%;
-            opacity: 0.6;
-            animation: fall 3s linear infinite;
-        }
-
-        @keyframes fall {
-            0% {
-                transform: translateY(-100vh);
-            }
-
-            100% {
-                transform: translateY(100vh);
-            }
+        .footer {
+            margin-top: 40px;
+            color: #aaa;
+            font-size: 0.95rem;
         }
     </style>
-    <script>
-        // Tạo hiệu ứng đá rơi
-        function createStones() {
-            const container = document.body;
-            for (let i = 0; i < 10; i++) {
-                const stone = document.createElement('div');
-                stone.className = 'stone';
-                stone.style.left = Math.random() * 100 + 'vw';
-                stone.style.animationDelay = Math.random() * 3 + 's';
-                container.appendChild(stone);
-            }
-        }
-
-        // Chuyển hướng về trang chính
-        window.onload = function () {
-            createStones();
-            sessionStorage.setItem('redirect', window.location.pathname);
-            setTimeout(() => {
-                window.location.href = '/portfolio/';
-            }, 5000);
-        }
-    </script>
 </head>
 
 <body>
     <div class="container">
-        <div class="caveman"></div>
-        <h1>Oops! Trang không tìm thấy</h1>
-        <p>Người thời đồ đá đã lạc đường rồi!</p>
-        <p class="redirect-message">Đang chuyển hướng về hang động chính...</p>
+        <img class="caveman" src="https://cdn.pixabay.com/photo/2017/01/31/13/14/animal-2028258_1280.png"
+            alt="Caveman" />
+        <h1>404 Page</h1>
+        <div class="notfound">Trang không tồn tại</div>
+        <div class="desc">Vui lòng click vào button phía dưới để quay về trang chủ.</div>
+        <button class="home-btn" onclick="window.location.href='/'">Về Trang Chủ</button>
     </div>
+    <div class="footer">&copy; 2024 by Phạm Hoài Nam</div>
 </body>
 
 </html>
