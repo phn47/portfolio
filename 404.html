@@ -4,174 +4,255 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>404 - Stone Age</title>
+    <title>404 - Phạm Hoài Nam</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Fira+Code:wght@400;500;600&display=swap"
+        rel="stylesheet">
     <style>
+        :root {
+            --primary: #3b82f6;
+            --primary-dark: #2563eb;
+            --dark: #1e293b;
+            --light: #f8fafc;
+        }
+
         body {
             margin: 0;
             padding: 0;
             min-height: 100vh;
-            background: linear-gradient(180deg, #e0cda5 0%, #bfa77a 100%);
+            background: var(--dark);
+            color: var(--light);
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            font-family: 'Segoe UI', 'Arial', sans-serif;
+            font-family: 'Poppins', sans-serif;
+            overflow: hidden;
+        }
+
+        .stars {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .star {
+            position: absolute;
+            background: white;
+            border-radius: 50%;
+            animation: twinkle var(--duration) infinite;
+            opacity: 0;
+        }
+
+        @keyframes twinkle {
+
+            0%,
+            100% {
+                opacity: 0;
+            }
+
+            50% {
+                opacity: 1;
+            }
         }
 
         .container {
-            background: rgba(255, 255, 255, 0.85);
-            border-radius: 18px;
-            box-shadow: 0 8px 32px rgba(80, 60, 20, 0.18);
-            padding: 40px 32px 32px 32px;
+            background: rgba(30, 41, 59, 0.8);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 24px;
+            padding: 48px;
             text-align: center;
-            max-width: 370px;
-            margin: 32px 0 0 0;
+            max-width: 500px;
+            margin: 32px;
             position: relative;
+            z-index: 1;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+            animation: container-appear 0.6s ease-out;
         }
 
-        .stone-age-art {
-            margin: 0 auto 18px auto;
-            width: 160px;
-            height: 140px;
-            display: flex;
-            align-items: flex-end;
-            justify-content: center;
-            animation: caveman-shake 2.5s infinite linear;
+        @keyframes container-appear {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
 
-        /* SVG art style */
-        .stone-age-art svg {
-            width: 100%;
-            height: 100%;
-            display: block;
+        .error-code {
+            font-size: 8rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin: 0;
+            line-height: 1;
+            text-shadow: 0 0 20px rgba(59, 130, 246, 0.3);
+            font-family: 'Fira Code', monospace;
+            animation: glow 2s ease-in-out infinite;
         }
 
-        h1 {
-            font-size: 3.2rem;
-            color: #6b4f27;
-            margin: 0 0 8px 0;
-            font-family: 'Georgia', serif;
-            letter-spacing: 2px;
-            text-shadow: 2px 2px 0 #d2b48c, 0 2px 8px #bfa77a44;
+        @keyframes glow {
+
+            0%,
+            100% {
+                text-shadow: 0 0 20px rgba(59, 130, 246, 0.3);
+            }
+
+            50% {
+                text-shadow: 0 0 30px rgba(59, 130, 246, 0.6);
+            }
         }
 
         .notfound {
             font-size: 1.5rem;
-            color: #4d3a1a;
-            margin-bottom: 10px;
-            font-weight: bold;
-            letter-spacing: 1px;
+            color: var(--light);
+            margin: 16px 0;
+            font-weight: 500;
         }
 
         .desc {
-            font-size: 1.05rem;
-            color: #6b4f27;
-            margin-bottom: 28px;
+            font-size: 1.1rem;
+            color: #94a3b8;
+            margin-bottom: 32px;
+            line-height: 1.6;
         }
 
         .home-btn {
-            background: #a98c5e;
-            color: #fff;
+            background: var(--primary);
+            color: white;
             border: none;
-            padding: 13px 30px;
-            border-radius: 8px;
+            padding: 14px 32px;
+            border-radius: 12px;
             font-size: 1.1rem;
+            font-weight: 500;
             cursor: pointer;
-            font-weight: bold;
-            box-shadow: 0 2px 8px rgba(80, 60, 20, 0.10);
-            transition: background 0.2s, transform 0.2s;
+            transition: all 0.3s ease;
+            font-family: 'Poppins', sans-serif;
+            position: relative;
+            overflow: hidden;
         }
 
         .home-btn:hover {
-            background: #7c623a;
-            transform: scale(1.04) translateY(-2px);
+            background: var(--primary-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
+        }
+
+        .home-btn:active {
+            transform: translateY(0);
+        }
+
+        .home-btn::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 5px;
+            height: 5px;
+            background: rgba(255, 255, 255, 0.5);
+            opacity: 0;
+            border-radius: 100%;
+            transform: scale(1, 1) translate(-50%);
+            transform-origin: 50% 50%;
+        }
+
+        .home-btn:focus:not(:active)::after {
+            animation: ripple 1s ease-out;
+        }
+
+        @keyframes ripple {
+            0% {
+                transform: scale(0, 0);
+                opacity: 0.5;
+            }
+
+            100% {
+                transform: scale(20, 20);
+                opacity: 0;
+            }
         }
 
         .footer {
-            margin-top: 36px;
-            color: #a98c5e;
-            font-size: 0.95rem;
+            margin-top: 48px;
+            color: #64748b;
+            font-size: 0.9rem;
+            z-index: 1;
         }
 
-        @keyframes caveman-shake {
-
-            0%,
-            100% {
-                transform: translateY(0);
+        @media (max-width: 640px) {
+            .container {
+                margin: 16px;
+                padding: 32px;
             }
 
-            10% {
-                transform: translateY(-2px) rotate(-2deg);
+            .error-code {
+                font-size: 6rem;
             }
 
-            20% {
-                transform: translateY(2px) rotate(2deg);
+            .notfound {
+                font-size: 1.25rem;
             }
 
-            30% {
-                transform: translateY(-1px) rotate(-1deg);
-            }
-
-            40% {
-                transform: translateY(1px) rotate(1deg);
-            }
-
-            50% {
-                transform: translateY(0);
+            .desc {
+                font-size: 1rem;
             }
         }
     </style>
 </head>
 
 <body>
+    <div class="stars" id="stars"></div>
     <div class="container">
-        <div class="stone-age-art">
-            <!-- SVG hình người tiền sử, đá, cây bụi, xương, không có lửa/điện -->
-            <svg viewBox="0 0 220 180" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <!-- Đá lớn bên trái -->
-                <ellipse cx="40" cy="150" rx="28" ry="18" fill="#bfa77a" />
-                <!-- Đá nhỏ bên phải -->
-                <ellipse cx="180" cy="160" rx="18" ry="10" fill="#bfa77a" />
-                <!-- Cây bụi -->
-                <ellipse cx="70" cy="160" rx="10" ry="5" fill="#7c9c5a" />
-                <ellipse cx="150" cy="170" rx="8" ry="4" fill="#7c9c5a" />
-                <!-- Xương -->
-                <rect x="110" y="165" width="22" height="5" rx="2.5" fill="#e5e5e5" />
-                <ellipse cx="110" cy="167.5" rx="3" ry="3" fill="#e5e5e5" />
-                <ellipse cx="132" cy="167.5" rx="3" ry="3" fill="#e5e5e5" />
-                <!-- Người tiền sử -->
-                <ellipse cx="110" cy="110" rx="22" ry="32" fill="#e2b07a" />
-                <!-- Đầu -->
-                <ellipse cx="110" cy="80" rx="16" ry="18" fill="#e2b07a" />
-                <!-- Tóc -->
-                <ellipse cx="110" cy="70" rx="13" ry="8" fill="#6b4f27" />
-                <ellipse cx="120" cy="80" rx="4" ry="3" fill="#6b4f27" />
-                <!-- Mắt -->
-                <ellipse cx="105" cy="82" rx="2" ry="2.5" fill="#4d3a1a" />
-                <ellipse cx="115" cy="82" rx="2" ry="2.5" fill="#4d3a1a" />
-                <!-- Miệng -->
-                <path d="M106 90 Q110 94 114 90" stroke="#4d3a1a" stroke-width="2" fill="none" />
-                <!-- Tay trái -->
-                <rect x="85" y="120" width="10" height="28" rx="5" fill="#e2b07a" />
-                <!-- Tay phải -->
-                <rect x="125" y="120" width="10" height="28" rx="5" fill="#e2b07a" />
-                <!-- Khố -->
-                <ellipse cx="110" cy="140" rx="15" ry="10" fill="#c97b3b" />
-                <ellipse cx="110" cy="140" rx="6" ry="3" fill="#bfa77a" opacity="0.3" />
-                <!-- Chân trái -->
-                <rect x="100" y="150" width="7" height="20" rx="3.5" fill="#e2b07a" />
-                <!-- Chân phải -->
-                <rect x="113" y="150" width="7" height="20" rx="3.5" fill="#e2b07a" />
-            </svg>
+        <h1 class="error-code">404</h1>
+        <div class="notfound">Oops! Trang không tồn tại</div>
+        <div class="desc">
+            Có vẻ như bạn đã đi lạc vào không gian vũ trụ của tôi.<br>
+            Hãy quay về hành tinh chính để khám phá thêm!
         </div>
-        <h1>404</h1>
-        <div class="notfound">Trang không tồn tại</div>
-        <div class="desc">Có vẻ như bạn đã lạc vào thời kỳ đồ đá, nơi chưa có điện và lửa.<br>Hãy quay về hang động
-            chính!</div>
-        <button class="home-btn" onclick="window.location.href='https://phn47.github.io/portfolio'">Về Trang
-            Chủ</button>
+        <button class="home-btn" onclick="window.location.href='https://phn47.github.io/portfolio'">
+            Về Trang Chủ
+        </button>
     </div>
     <div class="footer">&copy; 2024 by Phạm Hoài Nam</div>
+
+    <script>
+        // Tạo hiệu ứng sao
+        function createStars() {
+            const starsContainer = document.getElementById('stars');
+            const starCount = 100;
+
+            for (let i = 0; i < starCount; i++) {
+                const star = document.createElement('div');
+                star.className = 'star';
+
+                // Vị trí ngẫu nhiên
+                star.style.left = `${Math.random() * 100}%`;
+                star.style.top = `${Math.random() * 100}%`;
+
+                // Kích thước ngẫu nhiên
+                const size = Math.random() * 2;
+                star.style.width = `${size}px`;
+                star.style.height = `${size}px`;
+
+                // Thời gian animation ngẫu nhiên
+                star.style.setProperty('--duration', `${Math.random() * 3 + 2}s`);
+
+                starsContainer.appendChild(star);
+            }
+        }
+
+        // Khởi tạo hiệu ứng sao khi trang được tải
+        window.addEventListener('load', createStars);
+    </script>
 </body>
 
 </html>
