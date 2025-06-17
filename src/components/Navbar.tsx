@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { FaSun, FaMoon, FaBars, FaTimes, FaGithub, FaLinkedin, FaEnvelope } from 'react-icons/fa';
+import { useTranslation } from 'react-i18next';
 
 interface NavbarProps {
     theme: 'light' | 'dark';
@@ -12,6 +13,7 @@ const Navbar: React.FC<NavbarProps> = ({ theme, toggleTheme }) => {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
     const [scrolled, setScrolled] = useState(false);
     const location = useLocation();
+    const { t, i18n } = useTranslation();
 
     const handleScroll = () => {
         if (window.scrollY > 20) {
@@ -32,6 +34,18 @@ const Navbar: React.FC<NavbarProps> = ({ theme, toggleTheme }) => {
         setIsMenuOpen(false);
     }, [location]);
 
+    const handleLanguageChange = (lng: string) => {
+        i18n.changeLanguage(lng);
+        localStorage.setItem('lang', lng);
+    };
+
+    useEffect(() => {
+        const savedLang = localStorage.getItem('lang');
+        if (savedLang && savedLang !== i18n.language) {
+            i18n.changeLanguage(savedLang);
+        }
+    }, [i18n]);
+
     return (
         <header
             className={`fixed w-full z-50 transition-all duration-300 ${scrolled
@@ -46,17 +60,17 @@ const Navbar: React.FC<NavbarProps> = ({ theme, toggleTheme }) => {
 
                 {/* Desktop Menu */}
                 <nav className="hidden md:flex items-center gap-8">
-                    <Link to="/" className={`nav-link ${location.pathname === '/' ? 'text-primary' : ''}`}>
-                        Trang chủ
+                    <Link to="/" className="hover:text-primary transition-colors">
+                        {t('home')}
                     </Link>
-                    <Link to="/about" className={`nav-link ${location.pathname === '/about' ? 'text-primary' : ''}`}>
-                        Giới thiệu
+                    <Link to="/about" className="hover:text-primary transition-colors">
+                        {t('about')}
                     </Link>
-                    <Link to="/projects" className={`nav-link ${location.pathname === '/projects' ? 'text-primary' : ''}`}>
-                        Dự án
+                    <Link to="/projects" className="hover:text-primary transition-colors">
+                        {t('projects')}
                     </Link>
-                    <Link to="/contact" className={`nav-link ${location.pathname === '/contact' ? 'text-primary' : ''}`}>
-                        Liên hệ
+                    <Link to="/contact" className="hover:text-primary transition-colors">
+                        {t('contact')}
                     </Link>
                 </nav>
 
@@ -69,6 +83,17 @@ const Navbar: React.FC<NavbarProps> = ({ theme, toggleTheme }) => {
                     >
                         {theme === 'dark' ? <FaSun className="text-yellow-400" /> : <FaMoon className="text-gray-700" />}
                     </button>
+
+                    {/* Language toggle */}
+                    <select
+                        value={i18n.language}
+                        onChange={e => handleLanguageChange(e.target.value)}
+                        className="p-2 rounded-md border border-gray-300 dark:border-gray-700 bg-white dark:bg-dark-800 text-sm focus:outline-none"
+                        aria-label="Select language"
+                    >
+                        <option value="vi">VI</option>
+                        <option value="en">EN</option>
+                    </select>
 
                     {/* Social Icons - Desktop only */}
                     <div className="hidden md:flex items-center gap-3">
@@ -115,46 +140,32 @@ const Navbar: React.FC<NavbarProps> = ({ theme, toggleTheme }) => {
                     exit={{ opacity: 0, y: -20 }}
                     className="md:hidden bg-white dark:bg-dark absolute top-full left-0 w-full shadow-lg"
                 >
-                    <div className="container py-4 flex flex-col gap-4">
-                        <Link to="/" className="py-2 hover:text-primary transition-colors">
-                            Trang chủ
+                    <nav className="flex flex-col gap-4 p-6">
+                        <Link to="/" className="hover:text-primary transition-colors" onClick={() => setIsMenuOpen(false)}>
+                            {t('home')}
                         </Link>
-                        <Link to="/about" className="py-2 hover:text-primary transition-colors">
-                            Giới thiệu
+                        <Link to="/about" className="hover:text-primary transition-colors" onClick={() => setIsMenuOpen(false)}>
+                            {t('about')}
                         </Link>
-                        <Link to="/projects" className="py-2 hover:text-primary transition-colors">
-                            Dự án
+                        <Link to="/projects" className="hover:text-primary transition-colors" onClick={() => setIsMenuOpen(false)}>
+                            {t('projects')}
                         </Link>
-                        <Link to="/contact" className="py-2 hover:text-primary transition-colors">
-                            Liên hệ
+                        <Link to="/contact" className="hover:text-primary transition-colors" onClick={() => setIsMenuOpen(false)}>
+                            {t('contact')}
                         </Link>
-
-                        {/* Social Icons - Mobile */}
-                        <div className="flex items-center gap-3 py-2">
-                            <a
-                                href="https://github.com/phamhoainam"
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                className="social-icon hover:bg-gray-200 dark:hover:bg-gray-800"
-                            >
-                                <FaGithub />
-                            </a>
-                            <a
-                                href="https://linkedin.com/in/phamhoainam"
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                className="social-icon hover:bg-gray-200 dark:hover:bg-gray-800"
-                            >
-                                <FaLinkedin />
-                            </a>
-                            <a
-                                href="mailto:phamnam1449@gmail.com"
-                                className="social-icon hover:bg-gray-200 dark:hover:bg-gray-800"
-                            >
-                                <FaEnvelope />
-                            </a>
+                        <div className="flex items-center gap-2 mt-4">
+                            <span className="text-xs">VI</span>
+                            <label className="switch">
+                                <input
+                                    type="checkbox"
+                                    checked={i18n.language === 'en'}
+                                    onChange={e => handleLanguageChange(e.target.checked ? 'en' : 'vi')}
+                                />
+                                <span className="slider"></span>
+                            </label>
+                            <span className="text-xs">EN</span>
                         </div>
-                    </div>
+                    </nav>
                 </motion.div>
             )}
         </header>

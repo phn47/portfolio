@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { FaMapMarkerAlt, FaPhoneAlt, FaEnvelope, FaPaperPlane, FaGithub, FaLinkedin } from 'react-icons/fa';
+import { useTranslation } from 'react-i18next';
 
 const Contact: React.FC = () => {
+    const { t } = useTranslation();
     const [formState, setFormState] = useState({
         name: '',
         email: '',
@@ -69,9 +71,9 @@ const Contact: React.FC = () => {
                     transition={{ duration: 0.5 }}
                     className="text-center mb-16"
                 >
-                    <h1 className="section-title mx-auto">Liên hệ với tôi</h1>
+                    <h1 className="section-title mx-auto">{t('contact.title', 'Liên hệ')}</h1>
                     <p className="text-gray-600 dark:text-gray-400 max-w-2xl mx-auto mt-4">
-                        Bạn có câu hỏi hoặc muốn hợp tác? Hãy liên hệ với tôi qua các kênh dưới đây.
+                        {t('contact.intro', 'Bạn có thể liên hệ với tôi qua các kênh sau hoặc gửi tin nhắn trực tiếp.')}
                     </p>
                 </motion.div>
 
@@ -159,8 +161,8 @@ const Contact: React.FC = () => {
                             {formStatus.type && (
                                 <div
                                     className={`p-4 rounded-lg mb-6 ${formStatus.type === 'success'
-                                            ? 'bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-100'
-                                            : 'bg-red-100 text-red-800 dark:bg-red-900 dark:text-red-100'
+                                        ? 'bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-100'
+                                        : 'bg-red-100 text-red-800 dark:bg-red-900 dark:text-red-100'
                                         }`}
                                 >
                                     {formStatus.message}

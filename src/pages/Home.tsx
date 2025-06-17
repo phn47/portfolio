@@ -3,8 +3,10 @@ import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import Typed from 'typed.js';
 import { FaGithub, FaLinkedin, FaEnvelope } from 'react-icons/fa';
+import { useTranslation } from 'react-i18next';
 
 const Home: React.FC = () => {
+    const { t } = useTranslation();
     const typedRef = useRef<HTMLSpanElement>(null);
     const typedInstanceRef = useRef<Typed | null>(null);
 
@@ -44,18 +46,17 @@ const Home: React.FC = () => {
                             transition={{ duration: 0.5 }}
                         >
                             <h2 className="text-xl md:text-2xl font-medium text-gray-600 dark:text-gray-400 mb-3">
-                                Xin chào, tôi là
+                                {t('home.hello', 'Xin chào, tôi là')}
                             </h2>
                             <h1 className="text-4xl md:text-6xl font-bold mb-4">
                                 Phạm Hoài Nam
                             </h1>
                             <div className="text-xl md:text-2xl font-medium mb-6 text-primary flex items-center">
-                                <span>Tôi là&nbsp;</span>
+                                <span>{t('home.im', 'Tôi là')}&nbsp;</span>
                                 <span ref={typedRef}></span>
                             </div>
                             <p className="text-gray-600 dark:text-gray-400 text-lg mb-8 max-w-lg">
-                                Kỹ sư phần mềm với niềm đam mê về phát triển phần mềm và công nghệ.
-                                Tôi tạo ra các ứng dụng web hiện đại với trải nghiệm người dùng tuyệt vời.
+                                {t('home.intro', 'Kỹ sư phần mềm với niềm đam mê về phát triển phần mềm và công nghệ. Tôi tạo ra các ứng dụng web hiện đại với trải nghiệm người dùng tuyệt vời.')}
                             </p>
                             <div className="flex flex-wrap gap-4 mb-8">
                                 <Link to="/contact" className="btn btn-primary">

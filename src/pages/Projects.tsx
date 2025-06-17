@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { FaGithub, FaExternalLinkAlt } from 'react-icons/fa';
+import { useTranslation } from 'react-i18next';
 
 interface Project {
     id: number;
@@ -14,6 +15,7 @@ interface Project {
 }
 
 const Projects: React.FC = () => {
+    const { t } = useTranslation();
     const [filter, setFilter] = useState<'all' | 'web' | 'app' | 'design'>('all');
 
     const projects: Project[] = [
@@ -104,17 +106,17 @@ const Projects: React.FC = () => {
                     transition={{ duration: 0.5 }}
                     className="text-center mb-16"
                 >
-                    <h1 className="section-title mx-auto">Dự án của tôi</h1>
+                    <h1 className="section-title mx-auto">{t('projects.title', 'Dự án của tôi')}</h1>
                     <p className="text-gray-600 dark:text-gray-400 max-w-2xl mx-auto mt-4">
-                        Khám phá các dự án tôi đã làm việc. Mỗi dự án là một cơ hội để học hỏi và phát triển kỹ năng.
+                        {t('projects.intro', 'Khám phá các dự án tôi đã làm việc. Mỗi dự án là một cơ hội để học hỏi và phát triển kỹ năng.')}
                     </p>
                 </motion.div>
 
                 <div className="flex justify-center flex-wrap gap-4 mb-12">
                     <button
                         className={`px-4 py-2 rounded-full text-sm font-medium transition-colors ${filter === 'all'
-                                ? 'bg-primary text-white'
-                                : 'bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-300 hover:bg-gray-300 dark:hover:bg-gray-600'
+                            ? 'bg-primary text-white'
+                            : 'bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-300 hover:bg-gray-300 dark:hover:bg-gray-600'
                             }`}
                         onClick={() => setFilter('all')}
                     >
@@ -122,8 +124,8 @@ const Projects: React.FC = () => {
                     </button>
                     <button
                         className={`px-4 py-2 rounded-full text-sm font-medium transition-colors ${filter === 'web'
-                                ? 'bg-primary text-white'
-                                : 'bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-300 hover:bg-gray-300 dark:hover:bg-gray-600'
+                            ? 'bg-primary text-white'
+                            : 'bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-300 hover:bg-gray-300 dark:hover:bg-gray-600'
                             }`}
                         onClick={() => setFilter('web')}
                     >
@@ -131,8 +133,8 @@ const Projects: React.FC = () => {
                     </button>
                     <button
                         className={`px-4 py-2 rounded-full text-sm font-medium transition-colors ${filter === 'app'
-                                ? 'bg-primary text-white'
-                                : 'bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-300 hover:bg-gray-300 dark:hover:bg-gray-600'
+                            ? 'bg-primary text-white'
+                            : 'bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-300 hover:bg-gray-300 dark:hover:bg-gray-600'
                             }`}
                         onClick={() => setFilter('app')}
                     >
@@ -140,8 +142,8 @@ const Projects: React.FC = () => {
                     </button>
                     <button
                         className={`px-4 py-2 rounded-full text-sm font-medium transition-colors ${filter === 'design'
-                                ? 'bg-primary text-white'
-                                : 'bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-300 hover:bg-gray-300 dark:hover:bg-gray-600'
+                            ? 'bg-primary text-white'
+                            : 'bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-300 hover:bg-gray-300 dark:hover:bg-gray-600'
                             }`}
                         onClick={() => setFilter('design')}
                     >

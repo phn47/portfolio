@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { FaDownload } from 'react-icons/fa';
+import { useTranslation } from 'react-i18next';
 
 interface Skill {
     name: string;
@@ -22,6 +23,7 @@ interface Education {
 }
 
 const About: React.FC = () => {
+    const { t } = useTranslation();
     const [activeTab, setActiveTab] = useState<'skills' | 'experience' | 'education'>('skills');
 
     const frontendSkills: Skill[] = [
@@ -109,9 +111,9 @@ const About: React.FC = () => {
                     transition={{ duration: 0.5 }}
                     className="text-center mb-16"
                 >
-                    <h1 className="section-title mx-auto">Giới thiệu</h1>
+                    <h1 className="section-title mx-auto">{t('about.title', 'Giới thiệu')}</h1>
                     <p className="text-gray-600 dark:text-gray-400 max-w-2xl mx-auto mt-4">
-                        Tìm hiểu thêm về tôi, kinh nghiệm và các kỹ năng của tôi
+                        {t('about.intro', 'Giới thiệu về bản thân...')}
                     </p>
                 </motion.div>
 

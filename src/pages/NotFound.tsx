@@ -1,12 +1,14 @@
 import { useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import '../styles/not-found.css';
+import { useTranslation } from 'react-i18next';
 
 const STAR_COUNT = 100;
 const COMET_COUNT = 3;
 
 const NotFound = () => {
     const containerRef = useRef<HTMLDivElement>(null);
+    const { t } = useTranslation();
 
     useEffect(() => {
         if (!containerRef.current) return;
@@ -66,12 +68,12 @@ const NotFound = () => {
         <div className="not-found" ref={containerRef}>
             <div className="not-found__container">
                 <h1 className="not-found__error-code">404</h1>
-                <h2 className="not-found__title">Oops! Trang không tồn tại</h2>
+                <h2 className="not-found__title">{t('notFound.title')}</h2>
                 <p className="not-found__description">
-                    Có vẻ như trang bạn đang tìm kiếm không tồn tại hoặc đã bị di chuyển.
+                    {t('notFound.description')}
                 </p>
                 <Link to="/" className="not-found__button">
-                    Quay về trang chủ
+                    {t('notFound.backHome')}
                 </Link>
             </div>
             <footer className="not-found__footer">
