@@ -16,11 +16,17 @@
             --primary-dark: #2563eb;
             --dark: #1e293b;
             --light: #f8fafc;
+            --star-count: 150;
+            --comet-count: 3;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
         }
 
         body {
-            margin: 0;
-            padding: 0;
             min-height: 100vh;
             background: var(--dark);
             color: var(--light);
@@ -30,6 +36,7 @@
             justify-content: center;
             font-family: 'Poppins', sans-serif;
             overflow: hidden;
+            position: relative;
         }
 
         .stars {
@@ -48,6 +55,29 @@
             border-radius: 50%;
             animation: twinkle var(--duration) infinite;
             opacity: 0;
+            will-change: transform, opacity;
+        }
+
+        .comet {
+            position: absolute;
+            width: 2px;
+            height: 2px;
+            background: linear-gradient(90deg, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 1) 50%, rgba(255, 255, 255, 0) 100%);
+            border-radius: 50%;
+            animation: comet var(--duration) linear infinite;
+            opacity: 0;
+            will-change: transform, opacity;
+        }
+
+        .comet::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100px;
+            height: 1px;
+            background: linear-gradient(90deg, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0.3) 50%, rgba(255, 255, 255, 0) 100%);
+            transform: translateX(-100%);
         }
 
         @keyframes twinkle {
@@ -55,10 +85,32 @@
             0%,
             100% {
                 opacity: 0;
+                transform: scale(1);
             }
 
             50% {
                 opacity: 1;
+                transform: scale(1.2);
+            }
+        }
+
+        @keyframes comet {
+            0% {
+                opacity: 0;
+                transform: translateX(0) translateY(0) rotate(0deg);
+            }
+
+            10% {
+                opacity: 1;
+            }
+
+            90% {
+                opacity: 1;
+            }
+
+            100% {
+                opacity: 0;
+                transform: translateX(calc(100vw + 100px)) translateY(calc(100vh + 100px)) rotate(45deg);
             }
         }
 
@@ -75,17 +127,19 @@
             z-index: 1;
             box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
             animation: container-appear 0.6s ease-out;
+            transform-style: preserve-3d;
+            perspective: 1000px;
         }
 
         @keyframes container-appear {
             from {
                 opacity: 0;
-                transform: translateY(20px);
+                transform: translateY(20px) rotateX(-10deg);
             }
 
             to {
                 opacity: 1;
-                transform: translateY(0);
+                transform: translateY(0) rotateX(0);
             }
         }
 
@@ -98,6 +152,21 @@
             text-shadow: 0 0 20px rgba(59, 130, 246, 0.3);
             font-family: 'Fira Code', monospace;
             animation: glow 2s ease-in-out infinite;
+            position: relative;
+            display: inline-block;
+        }
+
+        .error-code::before {
+            content: '404';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            color: var(--primary);
+            filter: blur(8px);
+            opacity: 0.5;
+            animation: glow 2s ease-in-out infinite reverse;
         }
 
         @keyframes glow {
@@ -105,10 +174,12 @@
             0%,
             100% {
                 text-shadow: 0 0 20px rgba(59, 130, 246, 0.3);
+                transform: scale(1);
             }
 
             50% {
                 text-shadow: 0 0 30px rgba(59, 130, 246, 0.6);
+                transform: scale(1.05);
             }
         }
 
@@ -117,6 +188,7 @@
             color: var(--light);
             margin: 16px 0;
             font-weight: 500;
+            animation: slide-up 0.6s ease-out 0.2s both;
         }
 
         .desc {
@@ -124,6 +196,19 @@
             color: #94a3b8;
             margin-bottom: 32px;
             line-height: 1.6;
+            animation: slide-up 0.6s ease-out 0.4s both;
+        }
+
+        @keyframes slide-up {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
 
         .home-btn {
@@ -135,50 +220,39 @@
             font-size: 1.1rem;
             font-weight: 500;
             cursor: pointer;
-            transition: all 0.3s ease;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
             font-family: 'Poppins', sans-serif;
             position: relative;
             overflow: hidden;
+            animation: slide-up 0.6s ease-out 0.6s both;
         }
 
         .home-btn:hover {
             background: var(--primary-dark);
-            transform: translateY(-2px);
+            transform: translateY(-2px) scale(1.02);
             box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
         }
 
         .home-btn:active {
-            transform: translateY(0);
+            transform: translateY(0) scale(0.98);
         }
 
-        .home-btn::after {
+        .home-btn::before {
             content: '';
             position: absolute;
             top: 50%;
             left: 50%;
-            width: 5px;
-            height: 5px;
-            background: rgba(255, 255, 255, 0.5);
-            opacity: 0;
-            border-radius: 100%;
-            transform: scale(1, 1) translate(-50%);
-            transform-origin: 50% 50%;
+            width: 0;
+            height: 0;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 50%;
+            transform: translate(-50%, -50%);
+            transition: width 0.6s ease-out, height 0.6s ease-out;
         }
 
-        .home-btn:focus:not(:active)::after {
-            animation: ripple 1s ease-out;
-        }
-
-        @keyframes ripple {
-            0% {
-                transform: scale(0, 0);
-                opacity: 0.5;
-            }
-
-            100% {
-                transform: scale(20, 20);
-                opacity: 0;
-            }
+        .home-btn:hover::before {
+            width: 300px;
+            height: 300px;
         }
 
         .footer {
@@ -186,6 +260,17 @@
             color: #64748b;
             font-size: 0.9rem;
             z-index: 1;
+            animation: fade-in 0.6s ease-out 0.8s both;
+        }
+
+        @keyframes fade-in {
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
         }
 
         @media (max-width: 640px) {
@@ -206,6 +291,15 @@
                 font-size: 1rem;
             }
         }
+
+        @media (prefers-reduced-motion: reduce) {
+            * {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+                scroll-behavior: auto !important;
+            }
+        }
     </style>
 </head>
 
@@ -222,15 +316,18 @@
             Về Trang Chủ
         </button>
     </div>
-    <div class="footer">&copy; 2024 by Phạm Hoài Nam</div>
+    <div class="footer">&copy; <span id="current-year"></span> by Phạm Hoài Nam</div>
 
     <script>
-        // Tạo hiệu ứng sao
-        function createStars() {
-            const starsContainer = document.getElementById('stars');
-            const starCount = 100;
+        // Cập nhật năm hiện tại
+        document.getElementById('current-year').textContent = new Date().getFullYear();
 
-            for (let i = 0; i < starCount; i++) {
+        // Tạo hiệu ứng sao và sao băng
+        function createSpaceEffects() {
+            const starsContainer = document.getElementById('stars');
+
+            // Tạo sao
+            for (let i = 0; i < getComputedStyle(document.documentElement).getPropertyValue('--star-count'); i++) {
                 const star = document.createElement('div');
                 star.className = 'star';
 
@@ -248,10 +345,41 @@
 
                 starsContainer.appendChild(star);
             }
+
+            // Tạo sao băng
+            for (let i = 0; i < getComputedStyle(document.documentElement).getPropertyValue('--comet-count'); i++) {
+                const comet = document.createElement('div');
+                comet.className = 'comet';
+
+                // Vị trí ngẫu nhiên
+                comet.style.left = `${Math.random() * 100}%`;
+                comet.style.top = `${Math.random() * 100}%`;
+
+                // Thời gian animation ngẫu nhiên
+                comet.style.setProperty('--duration', `${Math.random() * 10 + 5}s`);
+
+                starsContainer.appendChild(comet);
+            }
         }
 
-        // Khởi tạo hiệu ứng sao khi trang được tải
-        window.addEventListener('load', createStars);
+        // Khởi tạo hiệu ứng khi trang được tải
+        window.addEventListener('load', createSpaceEffects);
+
+        // Tối ưu performance với Intersection Observer
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.animationPlayState = 'running';
+                } else {
+                    entry.target.style.animationPlayState = 'paused';
+                }
+            });
+        }, { threshold: 0.1 });
+
+        // Quan sát các phần tử có animation
+        document.querySelectorAll('.error-code, .notfound, .desc, .home-btn').forEach(el => {
+            observer.observe(el);
+        });
     </script>
 </body>
 
