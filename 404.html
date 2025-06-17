@@ -4,109 +4,172 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>404 Page Not Found</title>
+    <title>404 - Stone Age</title>
     <style>
         body {
             margin: 0;
             padding: 0;
             min-height: 100vh;
-            background: #fffbe6;
+            background: linear-gradient(180deg, #e0cda5 0%, #bfa77a 100%);
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            font-family: 'Segoe UI', 'Comic Sans MS', cursive, sans-serif;
+            font-family: 'Segoe UI', 'Arial', sans-serif;
         }
 
         .container {
+            background: rgba(255, 255, 255, 0.85);
+            border-radius: 18px;
+            box-shadow: 0 8px 32px rgba(80, 60, 20, 0.18);
+            padding: 40px 32px 32px 32px;
             text-align: center;
-            margin-top: 40px;
+            max-width: 370px;
+            margin: 32px 0 0 0;
+            position: relative;
         }
 
-        .caveman {
-            width: 180px;
-            margin: 0 auto 20px auto;
-            animation: shake 2s infinite linear;
+        .stone-age-art {
+            margin: 0 auto 18px auto;
+            width: 160px;
+            height: 140px;
+            display: flex;
+            align-items: flex-end;
+            justify-content: center;
+            animation: caveman-shake 2.5s infinite linear;
         }
 
-        @keyframes shake {
+        /* SVG art style */
+        .stone-age-art svg {
+            width: 100%;
+            height: 100%;
+            display: block;
+        }
+
+        h1 {
+            font-size: 3.2rem;
+            color: #6b4f27;
+            margin: 0 0 8px 0;
+            font-family: 'Georgia', serif;
+            letter-spacing: 2px;
+            text-shadow: 2px 2px 0 #d2b48c, 0 2px 8px #bfa77a44;
+        }
+
+        .notfound {
+            font-size: 1.5rem;
+            color: #4d3a1a;
+            margin-bottom: 10px;
+            font-weight: bold;
+            letter-spacing: 1px;
+        }
+
+        .desc {
+            font-size: 1.05rem;
+            color: #6b4f27;
+            margin-bottom: 28px;
+        }
+
+        .home-btn {
+            background: #a98c5e;
+            color: #fff;
+            border: none;
+            padding: 13px 30px;
+            border-radius: 8px;
+            font-size: 1.1rem;
+            cursor: pointer;
+            font-weight: bold;
+            box-shadow: 0 2px 8px rgba(80, 60, 20, 0.10);
+            transition: background 0.2s, transform 0.2s;
+        }
+
+        .home-btn:hover {
+            background: #7c623a;
+            transform: scale(1.04) translateY(-2px);
+        }
+
+        .footer {
+            margin-top: 36px;
+            color: #a98c5e;
+            font-size: 0.95rem;
+        }
+
+        @keyframes caveman-shake {
 
             0%,
             100% {
                 transform: translateY(0);
             }
 
+            10% {
+                transform: translateY(-2px) rotate(-2deg);
+            }
+
             20% {
-                transform: translateY(-5px);
+                transform: translateY(2px) rotate(2deg);
+            }
+
+            30% {
+                transform: translateY(-1px) rotate(-1deg);
             }
 
             40% {
-                transform: translateY(5px);
+                transform: translateY(1px) rotate(1deg);
             }
 
-            60% {
-                transform: translateY(-3px);
+            50% {
+                transform: translateY(0);
             }
-
-            80% {
-                transform: translateY(3px);
-            }
-        }
-
-        h1 {
-            font-size: 4rem;
-            color: #222;
-            margin: 0 0 10px 0;
-            font-family: 'Georgia', serif;
-        }
-
-        .notfound {
-            font-size: 2rem;
-            color: #2d2d2d;
-            margin-bottom: 10px;
-            font-weight: bold;
-        }
-
-        .desc {
-            font-size: 1.1rem;
-            color: #444;
-            margin-bottom: 30px;
-        }
-
-        .home-btn {
-            background: #4CAF50;
-            color: #fff;
-            border: none;
-            padding: 14px 32px;
-            border-radius: 6px;
-            font-size: 1.1rem;
-            cursor: pointer;
-            transition: background 0.2s, transform 0.2s;
-            font-weight: bold;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
-        }
-
-        .home-btn:hover {
-            background: #388e3c;
-            transform: translateY(-2px) scale(1.04);
-        }
-
-        .footer {
-            margin-top: 40px;
-            color: #aaa;
-            font-size: 0.95rem;
         }
     </style>
 </head>
 
 <body>
     <div class="container">
-        <img class="caveman" src="https://cdn.pixabay.com/photo/2017/01/31/13/14/animal-2028258_1280.png"
-            alt="Caveman" />
-        <h1>404 Page</h1>
+        <div class="stone-age-art">
+            <!-- SVG hình người tiền sử, đá, cây bụi, xương, không có lửa/điện -->
+            <svg viewBox="0 0 220 180" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <!-- Đá lớn bên trái -->
+                <ellipse cx="40" cy="150" rx="28" ry="18" fill="#bfa77a" />
+                <!-- Đá nhỏ bên phải -->
+                <ellipse cx="180" cy="160" rx="18" ry="10" fill="#bfa77a" />
+                <!-- Cây bụi -->
+                <ellipse cx="70" cy="160" rx="10" ry="5" fill="#7c9c5a" />
+                <ellipse cx="150" cy="170" rx="8" ry="4" fill="#7c9c5a" />
+                <!-- Xương -->
+                <rect x="110" y="165" width="22" height="5" rx="2.5" fill="#e5e5e5" />
+                <ellipse cx="110" cy="167.5" rx="3" ry="3" fill="#e5e5e5" />
+                <ellipse cx="132" cy="167.5" rx="3" ry="3" fill="#e5e5e5" />
+                <!-- Người tiền sử -->
+                <ellipse cx="110" cy="110" rx="22" ry="32" fill="#e2b07a" />
+                <!-- Đầu -->
+                <ellipse cx="110" cy="80" rx="16" ry="18" fill="#e2b07a" />
+                <!-- Tóc -->
+                <ellipse cx="110" cy="70" rx="13" ry="8" fill="#6b4f27" />
+                <ellipse cx="120" cy="80" rx="4" ry="3" fill="#6b4f27" />
+                <!-- Mắt -->
+                <ellipse cx="105" cy="82" rx="2" ry="2.5" fill="#4d3a1a" />
+                <ellipse cx="115" cy="82" rx="2" ry="2.5" fill="#4d3a1a" />
+                <!-- Miệng -->
+                <path d="M106 90 Q110 94 114 90" stroke="#4d3a1a" stroke-width="2" fill="none" />
+                <!-- Tay trái -->
+                <rect x="85" y="120" width="10" height="28" rx="5" fill="#e2b07a" />
+                <!-- Tay phải -->
+                <rect x="125" y="120" width="10" height="28" rx="5" fill="#e2b07a" />
+                <!-- Khố -->
+                <ellipse cx="110" cy="140" rx="15" ry="10" fill="#c97b3b" />
+                <ellipse cx="110" cy="140" rx="6" ry="3" fill="#bfa77a" opacity="0.3" />
+                <!-- Chân trái -->
+                <rect x="100" y="150" width="7" height="20" rx="3.5" fill="#e2b07a" />
+                <!-- Chân phải -->
+                <rect x="113" y="150" width="7" height="20" rx="3.5" fill="#e2b07a" />
+            </svg>
+        </div>
+        <h1>404</h1>
         <div class="notfound">Trang không tồn tại</div>
-        <div class="desc">Vui lòng click vào button phía dưới để quay về trang chủ.</div>
-        <button class="home-btn" onclick="window.location.href='/'">Về Trang Chủ</button>
+        <div class="desc">Có vẻ như bạn đã lạc vào thời kỳ đồ đá, nơi chưa có điện và lửa.<br>Hãy quay về hang động
+            chính!</div>
+        <button class="home-btn" onclick="window.location.href='https://phn47.github.io/portfolio'">Về Trang
+            Chủ</button>
     </div>
     <div class="footer">&copy; 2024 by Phạm Hoài Nam</div>
 </body>
