@@ -11,12 +11,20 @@
         href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Fira+Code:wght@400;500;600&display=swap"
         rel="stylesheet">
     <meta name="description" content="Phạm Hoài Nam - Software Engineer Portfolio">
-  <script type="module" crossorigin src="/portfolio/assets/index-J0OJtlUz.js"></script>
-  <link rel="stylesheet" crossorigin href="/portfolio/assets/index-BwKpc_Q6.css">
+    <script>
+        // Xử lý chuyển hướng nếu có
+        const redirect = sessionStorage.getItem('redirect');
+        if (redirect) {
+            sessionStorage.removeItem('redirect');
+            if (redirect !== '/portfolio/' && redirect !== '/portfolio') {
+                window.history.replaceState(null, null, redirect);
+            }
+        }
+    </script>
 </head>
 
 <body>
-    <div id="root"></div>
+    <div id="root"></div>
 </body>
 
 </html>
