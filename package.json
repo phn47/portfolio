@@ -2,6 +2,7 @@
   "name": "portfolio",
   "version": "1.0.0",
   "description": "Phạm Hoài Nam - Portfolio",
+  "homepage": "https://phn47.github.io/portfolio/",
   "type": "module",
   "scripts": {
     "dev": "vite",
